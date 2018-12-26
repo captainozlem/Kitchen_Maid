@@ -33,6 +33,17 @@ router.put('/login', async (req, res, next) => {
   }
 });
 
+router.post('/signup', (req, res, next) => {
+  User.create(req.body)
+    .then(user => {
+      req.login(user, err => {
+        if (err) next(err);
+        else res.json(user);
+      });
+    })
+    .catch(next);
+});
+
 router.delete('/logout', (req, res, next) => {
   req.logout();
   req.session.destroy(err => {
