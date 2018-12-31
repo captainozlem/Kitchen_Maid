@@ -1,21 +1,24 @@
-// this model is just a generic example change it based on your project in the future
-
 const Sequelize = require('sequelize');
 const db = require('./database');
 
-const Model1 = db.define('model_1', {
-  title: {
+const GroceryList = db.define('grocery', {
+  item: {
     type: Sequelize.STRING,
     allowNull: false
   },
-  price: {
+  amount: {
     type: Sequelize.FLOAT,
     validate: {
       min: 0,
-      max: 100
+      max: 1000
     },
     defaultValue: 0
+  },
+  unit: {
+    type: Sequelize.STRING,
+    allowNull: true,
+    defaultValue: 'lbs'
   }
 });
 
-module.exports = Model1;
+module.exports = GroceryList;

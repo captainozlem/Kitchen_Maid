@@ -2,8 +2,9 @@
 // with your models, for which you'll find some blank files in this directory:
 
 const db = require('./database');
-const Model1 = require('./model_1');
-const Model2 = require('./model_2');
+//const User = require('./user');
+const GroceryList = require('./grocery');
+const Recipes = require('./recipes');
 
 // This is a great place to establish associations between your models
 // (https://sequelize-guides.netlify.com/association-types/).
@@ -11,12 +12,18 @@ const Model2 = require('./model_2');
 //
 // Puppy.belongsTo(Owner)
 
-Model1.belongsToMany(Model2, {through: 'Models'});
-Model2.belongsToMany(Model1, {through: 'Models'});
+GroceryList.belongsToMany(Recipes, {through: 'DesiredItem'});
+Recipes.belongsToMany(GroceryList, {through: 'DesiredItem'});
+
+//GroceryList.hasMany(User, {as: 'customer'});
+
+// User.hasMany(Recipes);
+// Recipes.hasMany(User);
 
 module.exports = {
   // Include your models in this exports object as well!
   db,
-  Model1,
-  Model2
+  //User,
+  GroceryList,
+  Recipes
 };

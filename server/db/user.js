@@ -6,6 +6,10 @@ const db = require('./database');
 const User = db.define(
   'users',
   {
+    username: {
+      type: Sequelize.STRING,
+      defaultValue: 'new user'
+    },
     email: {
       type: Sequelize.STRING,
       unique: true,
@@ -16,6 +20,10 @@ const User = db.define(
     },
     salt: {
       type: Sequelize.STRING
+    },
+    imageUrl: {
+      type: Sequelize.STRING,
+      defaultValue: 'https://robohash.org/ozlem?set-set2'
     },
     googleId: {type: Sequelize.STRING}
   },
