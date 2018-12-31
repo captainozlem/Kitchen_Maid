@@ -43,20 +43,16 @@ export const deleteRecipe = recipeId => async dispatch => {
   dispatch(removeRecipe(recipeId));
 };
 
-//default state
-//const defaultRobotState = [];
-
-// I stayed there should be deciced what will be the recipes state !! Arr or obj
 //reducer
-export const projectsReducer = (projectsState = [], action) => {
+export const recipeReducer = (recipesState = [], action) => {
   switch (action.type) {
-    case SET_PROJECTS:
-      return action.projects;
-    case ADD_PROJECT:
-      return [...projectsState, action.newProject];
-    case REMOVE_PROJECT:
-      return projectsState.filter(project => project.id !== action.projectId);
+    case SET_RECIPES:
+      return action.recipess;
+    case ADD_RECIPE:
+      return [...recipesState, action.newRecipe];
+    case REMOVE_RECIPE:
+      return recipesState.filter(recipe => recipe.id !== action.recipeId);
     default:
-      return projectsState;
+      return recipesState;
   }
 };

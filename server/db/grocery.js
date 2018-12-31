@@ -12,7 +12,7 @@ const GroceryList = db.define('grocery', {
       min: 0,
       max: 1000
     },
-    defaultValue: 0
+    defaultValue: 1
   },
   unit: {
     type: Sequelize.STRING,
