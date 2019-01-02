@@ -4,7 +4,7 @@
 const db = require('./database');
 //const User = require('./user');
 const GroceryList = require('./grocery');
-const Recipes = require('./recipes');
+//const Recipes = require('./recipes');
 
 // This is a great place to establish associations between your models
 // (https://sequelize-guides.netlify.com/association-types/).
@@ -12,8 +12,8 @@ const Recipes = require('./recipes');
 //
 // Puppy.belongsTo(Owner)
 
-GroceryList.belongsToMany(Recipes, {through: 'DesiredItem'});
-Recipes.belongsToMany(GroceryList, {through: 'DesiredItem'});
+// GroceryList.belongsToMany(Recipes, {through: 'DesiredItem'});
+//Recipes.belongsToMany(GroceryList, {through: 'DesiredItem'});
 
 //GroceryList.hasMany(User, {as: 'customer'});
 
@@ -24,6 +24,6 @@ module.exports = {
   // Include your models in this exports object as well!
   db,
   //User,
-  GroceryList,
-  Recipes
+  GroceryList
+  //Recipes
 };

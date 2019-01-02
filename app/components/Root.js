@@ -1,22 +1,16 @@
 import React from 'react';
 import {Route, withRouter, Switch} from 'react-router-dom';
-import AllGroceries from './AllGroceries';
-import AllRecipes from './AllRecipes';
-import Grocery from './Grocery';
-import Recipe from './Recipe';
-import UpdateGrocery from './UpdateGrocery';
+import {Groceries} from './Groceries';
+import {SingleItem} from './SingleItem';
+import {UpdateGrocery} from './UpdateGrocery';
 import {Navbar} from './Navbar';
 import {connect} from 'react-redux';
-import {fetchRecipes} from '../redux/recipes';
 import {fetchGrocery} from '../redux/grocery';
 import {Home} from './Home';
 
 export class Root extends React.Component {
   componentDidMount() {
-    // Huh, I wonder what this mysterious componentDidMount is doing here... 🤔
-
     this.props.fetchInitialGrocery();
-    this.props.fetchInitialRecipes();
   }
   render() {
     return (
@@ -25,11 +19,13 @@ export class Root extends React.Component {
         <main>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/robots" component={AllRobots} />
-            <Route exact path="/projects" component={AllProjects} />
-            <Route exact path="/robots/:robotId/edit" component={UpdateRobot} />
-            <Route path="/robots/:robotId" component={SingleRobot} />
-            <Route path="/projects/:projectId" component={SingleProject} />
+            <Route exact path="/groceries" component={Groceries} />
+            <Route
+              exact
+              path="/groceries/:groceryId/edit"
+              component={UpdateGrocery}
+            />
+            <Route path="/groceries/:groceryId" component={SingleItem} />
           </Switch>
         </main>
       </div>
@@ -39,15 +35,13 @@ export class Root extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    robots: state.robots,
-    projects: state.projects
+    groceries: state.groceries
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchInitialRobots: () => dispatch(fetchRobots()),
-    fetchInitialProjects: () => dispatch(fetchProjects())
+    fetchInitialGrocery: () => dispatch(fetchGrocery())
   };
 };
 
