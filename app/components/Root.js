@@ -1,16 +1,20 @@
 import React from 'react';
 import {Route, withRouter, Switch} from 'react-router-dom';
+import {Login} from './auth/Login';
 import {Groceries} from './Groceries';
 import {SingleItem} from './SingleItem';
 import {UpdateGrocery} from './UpdateGrocery';
 import {Navbar} from './Navbar';
 import {connect} from 'react-redux';
 import {fetchGrocery} from '../redux/grocery';
+import {getMe} from '../redux/user';
 import {Home} from './Home';
 
 export class Root extends React.Component {
   componentDidMount() {
     this.props.fetchInitialGrocery();
+    this.props.fetchInitialGetMe();
+    // I am not sure about that..
   }
   render() {
     return (
@@ -18,7 +22,9 @@ export class Root extends React.Component {
         <Navbar />
         <main>
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route component={Login} />
+
+            <Route exact path="/home" component={Home} />
             <Route exact path="/groceries" component={Groceries} />
             <Route
               exact
@@ -35,13 +41,15 @@ export class Root extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    groceries: state.groceries
+    groceries: state.groceries,
+    user: state.user
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchInitialGrocery: () => dispatch(fetchGrocery())
+    fetchInitialGrocery: () => dispatch(fetchGrocery()),
+    fetchInitialGetMe: () => dispatch(getMe())
   };
 };
 

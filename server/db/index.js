@@ -2,7 +2,7 @@
 // with your models, for which you'll find some blank files in this directory:
 
 const db = require('./database');
-//const User = require('./user');
+const User = require('./user');
 const GroceryList = require('./grocery');
 //const Recipes = require('./recipes');
 
@@ -12,18 +12,13 @@ const GroceryList = require('./grocery');
 //
 // Puppy.belongsTo(Owner)
 
-// GroceryList.belongsToMany(Recipes, {through: 'DesiredItem'});
-//Recipes.belongsToMany(GroceryList, {through: 'DesiredItem'});
-
-//GroceryList.hasMany(User, {as: 'customer'});
-
-// User.hasMany(Recipes);
-// Recipes.hasMany(User);
+GroceryList.belongsTo(User);
+User.hasOne(GroceryList);
 
 module.exports = {
   // Include your models in this exports object as well!
   db,
-  //User,
+  User,
   GroceryList
   //Recipes
 };

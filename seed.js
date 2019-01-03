@@ -1,4 +1,4 @@
-const {db, GroceryList} = require('./server/db');
+const {db, GroceryList, User} = require('./server/db');
 
 const seed = async () => {
   await db.sync({force: true});
@@ -13,6 +13,12 @@ const seed = async () => {
     item: 'English Cucumber',
     amount: '3',
     unit: 'pcs'
+  });
+
+  await User.create({
+    username: 'Ozlem',
+    email: 'ozlem@email.com',
+    password: '12345'
   });
 
   db.close();

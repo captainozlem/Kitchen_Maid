@@ -45,8 +45,8 @@ app.use(express.static(path.join(__dirname, '../public')));
 //api routes
 app.use('/api', require('./api'));
 
-// // authentication router
-// app.use('/auth', require('./auth'));
+// authentication router
+app.use('/authentication', require('./auth'));
 
 // Send index.html for any other requests
 app.get('*', (req, res) => {
@@ -71,3 +71,5 @@ app.listen(port, function() {
   console.log("Who's there?");
   console.log(`Your server, listening on port ${port}`);
 });
+
+module.exports = app;

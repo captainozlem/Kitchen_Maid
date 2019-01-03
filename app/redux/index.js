@@ -1,9 +1,10 @@
 import {combineReducers} from 'redux';
 import {groceryReducer} from './grocery';
-//import {recipeReducer} from './recipes';
+import {userReducer} from './user';
 
 const appReducer = combineReducers({
-  grocery: groceryReducer
+  grocery: groceryReducer,
+  user: userReducer
   //recipes: recipeReducer
 });
 

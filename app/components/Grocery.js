@@ -4,8 +4,6 @@ import {Link} from 'react-router-dom';
 const Grocery = props => {
   const groceries = props.groceries || [];
   const removeGrocery = props.removeGrocery;
-  // console.log('remove robot is===>', removeRobot);
-  // console.log('is robots working??===>', robots);
   return (
     <div className="grocery">
       <h1>LIST OF ITEMS</h1>
