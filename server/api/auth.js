@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {User} = require('./db/user');
+const {User} = require('../db/user');
 module.exports = router;
 router.use('/google', require('./oauth'));
 

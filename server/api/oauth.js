@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {User} = require('./db');
+const {User} = require('../db');
 const passport = require('passport');
 // don't forget to install passport-google-oauth
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
